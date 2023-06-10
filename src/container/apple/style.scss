@@ -1,0 +1,230 @@
+@use '../../lib/service.scss' as s;
+
+.header {
+    @extend .section;
+    background-color: s.color('backgroundDark');
+}
+
+.header__content {
+    @extend .section__content;
+
+    display: flex;
+    padding: s.space(4) 0;
+    justify-content: space-between;
+}
+
+.header__block {
+    display: flex;
+    gap: s.space(8);
+    align-items: center;
+}
+
+.header__icon {
+    @include s.click;
+}
+
+.header__link {
+    text-decoration: none;
+    color: s.color('whiteLight');
+
+    @include s.click;
+}
+
+.header__link {
+    font-size: s.size('small');
+}
+
+.ad {
+    @extend .section;
+    background-color: s.color('backgroundWhite');
+}
+
+.ad__content {
+    @extend .section__content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: s.space(3) 0;
+}
+
+.ad__title {
+    color: s.color('fontDark');
+    line-height: s.linheg(15);
+    font-size: s.size('smallplus');
+}
+
+.ad__link-text {
+    @extend .ad__title;
+    color: s.color('primary');
+    @include s.click;
+}
+
+.ad__link {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.product__content {
+    display: grid;
+    gap: s.space(5);
+    text-align: center;
+    align-content: center;
+}
+
+.product__title {
+    font-size: 56px;
+    font-weight: 600;
+    // color: s.color('fontDark');
+}
+
+.product__description {
+    font-size: 28px;
+}
+
+.product__action {
+    display: flex;
+    align-items: center;
+    gap: s.space(5);
+    justify-content: center;
+    @include s.click;
+
+}
+
+.product__link {
+    @include s.linkAction;
+}
+
+.product {
+    @extend .section;
+    padding-top: s.space(20);
+    padding-bottom: s.space(20);
+
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.product--padtopsml {
+    @extend .product;
+}
+
+.product-big {
+    max-height: 700px;
+    height: 100vh;
+
+    background-size: cover;
+
+    @media all and (width < s.screen('tablet')) {
+        background-size: 150%;
+        max-height: 500px;
+    }
+}
+
+.product-small {
+    max-height: 580px;
+    height: 100vh;
+
+    background-size: cover;
+
+    @media all and (width < s.screen('tablet')) {
+        background-size: 150%;
+        max-height: 500px;
+    }
+}
+
+.product--dark {
+    .product__title, .product__description {
+        color: s.color('background');
+    }
+
+    background-color: #000;
+}
+
+.product--light {
+    .product__title, .product__description {
+        color: s.color('fontDark');
+    }
+
+    background-color: #FAFAFA;
+}
+
+.product--top {
+    .product__content {
+        align-content: flex-start;
+    }
+}
+
+.product--bottom {
+    .product__content {
+        align-content: flex-end;
+    }
+}
+
+$productImage: (
+    'iphone-pro' '/img/iphonepro.png' #000,
+    'iphone' '/img/iphone.png' #FAFAFA,
+    'iwatch' '/img/iwatch.png' #000,
+    'trade-in' '/img/tradein.png' #FBFBFD,
+    'conference' '/img/conference.png' #000,
+    'ipad' '/img/ipad.png' #FBFBFB,
+    'smlbsns' '/img/smlbsns.png' #010101,
+    'mamd' '/img/mamd.png' #FBFBFD,
+    'card' '/img/card.png' #FBFBFD,
+    
+);
+
+@each $class, $url, $color in $productImage {
+    .product--#{$class} {
+        background-image: url(#{$url});
+        background-color: $color;
+    }
+}
+
+.product-small {
+    .product__title {
+        font-size: 40px;
+    }
+
+    .product__description {
+        font-size: 20px;
+    }
+}
+
+.footer {
+    @extend .section;
+    padding: s.space(10) 0;
+}
+
+.footer__content {
+    @extend .section__content;
+
+    display: flex;
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(6, 1fr);
+    gap: s.space(5);
+    justify-content: space-between;
+}
+
+.footer__block {
+    display: grid;
+    align-content: flex-start;
+    gap: s.space(4);
+}
+
+.footer__title {
+    color: s.color('fontDark');
+    font-size: s.size('small');
+    font-weight: 700;
+}
+
+.footer__nav {
+    display: grid;
+    gap: s.space(3);
+}
+
+.nav__item {
+    font-size: s.size('small');
+    color: #7a7a7a;
+    text-decoration: none;
+    @include s.click;
+}
